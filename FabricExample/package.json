@@ -26,5 +26,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "volta": {
+    "node": "14.19.3"
   }
 }
