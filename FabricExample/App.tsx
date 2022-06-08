@@ -1,7 +1,6 @@
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { MapView, Utils } from 'react-native-appjs';
-
-import React from 'react';
+import { MapType, MapView, Utils } from 'react-native-appjs';
+import React, { useState } from 'react';
 
 export default function App() {
   return <FabricExample />;
@@ -20,11 +19,17 @@ function TurboModulesExample() {
   );
 }
 
+const MAP_TYPES: MapType[] = ['standard', 'satellite', 'hybrid'];
+
 function FabricExample() {
+  const [mapType, setMapType] = useState<MapType>('standard');
   return (
     <View style={styles.container}>
       <Text>App.js</Text>
-      <MapView style={styles.map} />
+      <MapView style={styles.map} mapType={mapType} />
+      {MAP_TYPES.map((item) => (
+        <Button key={item} title={item} onPress={() => setMapType(item)} />
+      ))}
     </View>
   );
 }
